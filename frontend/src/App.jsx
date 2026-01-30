@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import HeroBanner from './components/HeroBanner'
 import Header from './components/Header'
@@ -7,14 +6,15 @@ import ProductCatalog from './components/ProductCatalog'
 import Breadcrumbs from './components/Breadcrumbs'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <Header />
       <Breadcrumbs />
-      <HeroBanner />
-      <ProductCatalog className="flex flex-col items-center" />
+      <div className='px-20'>
+        <HeroBanner />
+        <ProductCatalog className="flex flex-col items-center" />
+      </div>
       <Footer />
     </>
   )

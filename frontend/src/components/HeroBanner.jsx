@@ -1,6 +1,6 @@
 function HeroBanner() {
     return (
-        <div className="max-w-4xl mx-auto px-4 text-center mb-6">
+        <div className="max-w-4xl m-auto py-10 px-4 text-center">
             <h1 className="text-3xl font-semibold text-gray-900 mb-4">
                 Discover Our Products
             </h1>

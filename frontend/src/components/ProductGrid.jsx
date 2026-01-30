@@ -3,8 +3,13 @@ import ProductCard from "./ProductCard"
 function ProductGrid() {
     return(
         <>
-            <section className="max-w-7xl mx-auto px-4 py-8">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+            <section className="mx-auto w-full py-8">
+                <div className="flex flex-wrap justify-center gap-6">
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
                     <ProductCard />
                     <ProductCard />
                     <ProductCard />
