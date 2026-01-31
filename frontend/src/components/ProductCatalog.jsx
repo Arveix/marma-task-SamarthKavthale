@@ -1,10 +1,9 @@
 import { useState } from "react"
-import CloseIcon from '../assets/close_icon.svg'
-import DownArrow from '../assets/arrow_down_icon.svg'
-import UpArrow from '../assets/arrow_up_icon.svg'
-import LeftArrow from '../assets/arrow_left_icon.svg'
-import RightArrow from '../assets/arrow_right_icon.svg'
-import FilterSortBar from "./FilterSortBar"
+import CloseIcon from '../assets/images/icons/close_icon.svg'
+import DownArrow from '../assets/images/icons/arrow_down_icon.svg'
+import UpArrow from '../assets/images/icons/arrow_up_icon.svg'
+import LeftArrow from '../assets/images/icons/arrow_left_icon.svg'
+import RightArrow from '../assets/images/icons/arrow_right_icon.svg'
 import ProductGrid from "./ProductGrid"
 
 function SingleOptionFilterElement() {
@@ -44,7 +43,7 @@ function MultipleOptionsFilterElement({ title, options }) {
                 <button
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
-                    className="flex w-full items-center justify-between text-sm font-medium"
+                    className="flex w-full items-center justify-between text-sm font-medium cursor-pointer"
                 >
                     <div className="flex flex-col justify-items-start text-left">
                         <span className="uppercase">{title}</span>
@@ -63,7 +62,7 @@ function MultipleOptionsFilterElement({ title, options }) {
 
                 {isOpen && (
                     <div className="mt-3 space-y-2">
-                        <button aria-label="Unselect all" className="text-gray-400 text-sm underline w-full text-left" onClick={unselectAll}>Unselect all</button>
+                        <button aria-label="Unselect all" className="text-gray-400 text-sm underline w-full text-left cursor-pointer" onClick={unselectAll}>Unselect all</button>
                         {options.map((option) => (
                             <label
                                 key={option}
@@ -87,17 +86,20 @@ function MultipleOptionsFilterElement({ title, options }) {
 
 function ProductCatalog() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [sortBy, setSortBy] = useState("recommended");
+
+    const sortOptions = [{value: 'recommended', name: 'RECOMMENDED'}, {value: 'newest-first', name: "NEWEST FIRST"}, {value: 'popular', name:"POPULAR"} , {value: 'price-desc', name: 'PRICE: HIGH TO LOW'}, {value: 'price-asc', name: 'PRICE: LOW TO HIGH'}];
 
     return (
         <>
             <div className="border-y-1 border-gray-300 grid grid-cols-2 py-4 items-center text-center font-bold lg:flex lg:justify-between">
 
-                <div className="flex items-center">
-                    <button className="px-4 py-2 lg:hidden" onClick={() => setIsFilterOpen(true)}>
+                    <button className="px-4 py-2 lg:hidden border-r border-gray-300 cursor-pointer" onClick={() => setIsFilterOpen(true)}>
                         FILTER
                     </button>
+                <div className="hidden lg:flex items-center">
                     <span className="hidden lg:inline mr-5">3425 items</span>
-                    <button className="px-4 py-2 hidden lg:block" onClick={() => setIsFilterOpen(!isFilterOpen)}>
+                    <button className="px-4 py-2 cursor-pointer" onClick={() => setIsFilterOpen(!isFilterOpen)}>
                         {isFilterOpen
                             ? <div className="flex items-center"><img src={LeftArrow} /><span>Hide Filter</span></div>
                             : <div className="flex items-center"><img src={RightArrow} /><span>Show Filter</span></div>
@@ -105,18 +107,25 @@ function ProductCatalog() {
                     </button>
                 </div>
 
-
-                <select
-                    id="sortSelect"
-                    className="px-3 py-2 focus:outline-none text-center"
-                >
-                    <option value="recommended">RECOMMENDED</option>
-                    <option value="newest-first">NEWEST FIRST</option>
-                    <option value="popular">POPULAR</option>
-                    <option value="price-desc">PRICE: HIGH TO LOW</option>
-                    <option value="price-asc">PRICE: LOW TO HIGH</option>
-                </select>
-
+                <div className="flex justify-center px-3 py-2 text-center">
+                    <select
+                        id="sortSelect"
+                        className="focus:outline-none text-center appearance-none cursor-pointer"
+                    >
+                        {
+                            sortOptions.map((option) => {
+                                console.log(option);
+                                return <option key={option.value} value={option.value} className="text-right">{option.name}</option>
+                            })
+                        }
+                        {/* <option value="recommended">RECOMMENDED</option>
+                        <option value="newest-first">NEWEST FIRST</option>
+                        <option value="popular">POPULAR</option>
+                        <option value="price-desc">PRICE: HIGH TO LOW</option>
+                        <option value="price-asc">PRICE: LOW TO HIGH</option> */}
+                    </select>
+                    <img src={DownArrow} />
+                </div>
             </div>
 
             {isFilterOpen && (

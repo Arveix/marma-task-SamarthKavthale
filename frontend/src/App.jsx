@@ -11,7 +11,7 @@ function App() {
     <>
       <Header />
       <Breadcrumbs />
-      <div className='px-20'>
+      <div className='lg:px-20'>
         <HeroBanner />
         <ProductCatalog className="flex flex-col items-center" />
       </div>

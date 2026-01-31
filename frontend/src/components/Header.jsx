@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import MenuIcon from '../assets/hamburger_menu.svg'
-import Logo from '../assets/company_logo.svg'
-import SearchIcon from '../assets/search_icon.svg'
-import FavouriteOutline from '../assets/favourite_outline.svg'
-import CartIcon from '../assets/cart_icon.svg'
-import CloseIcon from '../assets/close_icon.svg'
-import ProfileIcon from '../assets/profile_icon.svg'
+import MenuIcon from '../assets/images/icons/hamburger_menu.svg'
+import Logo from '../assets/images/company_logo.svg'
+import SearchIcon from '../assets/images/icons/search_icon.svg'
+import FavouriteOutline from '../assets/images/icons/favourite_outline.svg'
+import CartIcon from '../assets/images/icons/cart_icon.svg'
+import CloseIcon from '../assets/images/icons/close_icon.svg'
+import ProfileIcon from '../assets/images/icons/profile_icon.svg'
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ function Header() {
 
     const languages = ["EN", "MR", "HI"];
     return (
-        <header className="bg-white border-b border-gray-200">
+        <header className="bg-white border-b border-gray-200 p-4">
             <div className="max-w-7xl mx-auto px-4 h-16 grid grid-cols-3 items-center">
 
                 <div className="flex items-center gap-3">
@@ -106,12 +106,12 @@ function Header() {
                     <img
                         src={Logo}
                         alt="Company logo"
-                        className="h-8 w-8"
+                        className="h-12 w-12"
                     />
                 </div>
 
                 <div className="text-center">
-                    <span className="text-xl font-bold">
+                    <span className="text-4xl font-bold">
                         LOGO
                     </span>
                 </div>
@@ -162,13 +162,13 @@ function Header() {
 
             </div>
             
-            <nav className="hidden md:flex justify-center">
-                <ul className="flex gap-10 py-4">
+            <nav className="hidden md:flex justify-center mt-6">
+                <ul className="flex gap-15 py-4">
                     {navLinks.map((item) => (
                         <li key={item}>
                             <a
                                 href="#"
-                                className="text-sm font-medium hover:text-gray-600"
+                                className="text-lg font-bold hover:text-gray-600"
                             >
                                 {item.label.toUpperCase()}
                             </a>
